@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyLogo | Modern E-Commerce</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7f7f7;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #111;
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            color: #666;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 18px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: #222;
+            color: white;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 600px;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.35),
+                    rgba(0,0,0,0.35)
+                ),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: white;
+            color: #111;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 17px;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            background: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .category {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .category:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 25px;
+            color: white;
+            background: linear-gradient(
+                transparent,
+                rgba(0,0,0,0.8)
+            );
+        }
+
+        .category-text h3 {
+            font-size: 25px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            background: #f7f7f7;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #777;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            background: #222;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background: #555;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: white;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* ================= PROMO ================= */
+
+        .promo {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.5),
+                    rgba(0,0,0,0.5)
+                ),
+                url("https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .promo h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .promo p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= CONTACT FORM ================= */
+
+        .contact {
+            background: #f7f7f7;
+        }
+
+        .form-card {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-card h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-card > p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 13px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #555;
+        }
+
+        /* ================= NEWSLETTER ================= */
+
+        .newsletter {
+            background: #222;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+        }
+
+        .newsletter-form button {
+            width: 150px;
+            border: none;
+            background: white;
+            color: #222;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .newsletter-form button:hover {
+            background: #ddd;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                gap: 2px;
+            }
+
+            nav a {
+                padding: 8px;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .category-grid,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+                padding: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==========================================================
+         GTM / GA4 CLASSROOM HANDS-ON NOTE
+         No GTM container is hard-coded in this page. It loads
+         automatically ONLY if the page URL includes ?gtm=GTM-XXXXXXX
+         (see the script just before </body>). Each student uses this
+         SAME published link, adding their own ?gtm=THEIR-ID at the end.
+         ========================================================== -->
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <!-- Clickable Logo -->
+        <a href="#home" class="logo">
+            MyLogo
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Discover Something New</h1>
+
+            <p>
+                Explore our carefully selected collection of products
+                designed to make everyday life simpler, smarter and better.
+            </p>
+
+            <a href="#products" class="hero-button">
+                Shop Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories">
+
+        <div class="section-title">
+
+            <h2>Explore Our Collections</h2>
+
+            <p>
+                Find products that match your style and everyday needs.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80"
+                    alt="Fashion collection"
+                >
+
+                <div class="category-text">
+                    <h3>Fashion</h3>
+                    <p>Everyday styles made simple.</p>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80"
+                    alt="Accessories collection"
+                >
+
+                <div class="category-text">
+                    <h3>Accessories</h3>
+                    <p>Details that complete your look.</p>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img
+                    src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=80"
+                    alt="Lifestyle collection"
+                >
+
+                <div class="category-text">
+                    <h3>Lifestyle</h3>
+                    <p>Products for modern living.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products" id="products">
+
+        <div class="section-title">
+
+            <h2>Featured Products</h2>
+
+            <p>
+                A few customer favourites from our latest collection.
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+            <!-- Product 1 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80"
+                    alt="Running shoes"
+                >
+
+                <div class="product-info">
+
+                    <h3>Urban Runner</h3>
+
+                    <p>
+                        Lightweight everyday sneakers designed for
+                        comfort and movement.
+                    </p>
+
+                    <div class="price">$89</div>
+
+                    <button class="buy-button" id="add-to-cart-btn-1">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+                    alt="White t-shirt"
+                >
+
+                <div class="product-info">
+
+                    <h3>Classic Essential Tee</h3>
+
+                    <p>
+                        A simple, versatile everyday essential
+                        crafted for effortless styling.
+                    </p>
+
+                    <div class="price">$39</div>
+
+                    <button class="buy-button" id="add-to-cart-btn-2">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=80"
+                    alt="Travel backpack"
+                >
+
+                <div class="product-info">
+
+                    <h3>Everyday Backpack</h3>
+
+                    <p>
+                        Spacious, practical and designed for
+                        work, travel and everyday adventures.
+                    </p>
+
+                    <div class="price">$69</div>
+
+                    <button class="buy-button" id="add-to-cart-btn-3">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about" id="about">
+
+        <div class="about-container">
+
+            <div class="section-title">
+
+                <h2>About MyLogo</h2>
+
+            </div>
+
+            <p>
+                MyLogo is a modern e-commerce destination focused on
+                bringing together thoughtfully selected products for
+                everyday life. From fashion and accessories to lifestyle
+                essentials, our goal is to make online shopping simple,
+                enjoyable and convenient.
+            </p>
+
+            <br>
+
+            <p>
+                We believe great shopping experiences are about more than
+                simply buying products. They are about discovering things
+                that fit your lifestyle, your personality and the way
+                you choose to live.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROMOTIONAL SECTION ================= -->
+
+    <section class="promo">
+
+        <h2>Designed For Everyday Life</h2>
+
+        <p>
+            Discover our latest collection and find something
+            you'll love.
+        </p>
+
+        <a href="#products" class="hero-button">
+            Explore Collection
+        </a>
+
+    </section>
+
+
+    <!-- ================= CONTACT FORM ================= -->
+
+    <section class="contact" id="contact">
+
+        <div class="form-card">
+
+            <h2>Get in Touch</h2>
+
+            <p>
+                Have a question? Send us your details and we'll
+                get back to you.
+            </p>
+
+            <form id="contact-form">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                    id="contact-submit-btn"
+                >
+                    Submit
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= NEWSLETTER ================= -->
+
+    <section class="newsletter">
+
+        <h2>Subscribe to Our Newsletter</h2>
+
+        <p>
+            Get new product announcements, special offers
+            and updates directly in your inbox.
+        </p>
+
+        <form class="newsletter-form" id="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Enter your email address"
+                required
+            >
+
+            <button type="submit" id="newsletter-submit-btn">
+                Subscribe
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 MyLogo. All rights reserved.
+        </p>
+
+    </footer>
+
+    <!-- ==========================================================
+         GTM AUTO-LOADER — reads ?gtm=GTM-XXXXXXX from the page URL
+         and installs that container automatically on page load.
+         No ?gtm= param -> nothing loads, page stays "clean".
+         This is what removes the "console injection disappears on
+         reload" problem: each student's link already has their ID
+         baked in, so refreshing the page keeps their tracking live.
+         ========================================================== -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var gtmId = params.get('gtm');
+        if (!gtmId) return; // no ?gtm= present, so page loads with no tracking
+
+        // Standard GTM snippet, injected dynamically using the student's own ID
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', gtmId);
+
+        // noscript fallback, added for completeness
+        var ns = document.createElement('noscript');
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.googletagmanager.com/ns.html?id=' + gtmId;
+        iframe.height = 0; iframe.width = 0;
+        iframe.style.display = 'none'; iframe.style.visibility = 'hidden';
+        ns.appendChild(iframe);
+        document.body.appendChild(ns);
+      })();
+    </script>
+
+</body>
+
+</html>
